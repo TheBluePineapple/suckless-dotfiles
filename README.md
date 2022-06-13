@@ -1,7 +1,7 @@
 # dotfiles
 List of config files for various applications
 
-##TODO:
+## TODO:
 * [ ] .gitconfig
 * [ ] .gitignore
 * [ ] .vscode
