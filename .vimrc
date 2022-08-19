@@ -118,7 +118,7 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 call plug#begin('~/.vim/plugged')
 
   " GENERAL
-  Plug 'dense-analysis/ale'
+  " Plug 'dense-analysis/ale'
   
   Plug 'preservim/nerdtree'
   
@@ -127,42 +127,42 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-commentary'
   
   " RUST
-  Plug 'rust-lang/rust.vim'
+  " Plug 'rust-lang/rust.vim'
 
   " WEBDEV
-  Plug 'mattn/emmet-vim'
+  " Plug 'mattn/emmet-vim'
 
-  Plug 'MaxMEllon/vim-jsx-pretty'
+  " Plug 'MaxMEllon/vim-jsx-pretty'
 
 call plug#end()
 " RUST
-let g:ale_linters = {
-\  'rust': ['analyzer'],
-\}
+" let g:ale_linters = {
+" \  'rust': ['analyzer'],
+" \}
 
-let g:ale_fixers = { 'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lines'] }
+" let g:ale_fixers = { 'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lines'] }
 
 " Optional, configure as-you-type completions
-set completeopt=menu,menuone,preview,noselect,noinsert
-let g:ale_completion_enabled = 1
+" set completeopt=menu,menuone,preview,noselect,noinsert
+" let g:ale_completion_enabled = 1
 
-nnoremap <C-LeftMouse> :ALEGoToDefinition<CR>   
+" nnoremap <C-LeftMouse> :ALEGoToDefinition<CR>   
 
 "WEB DEV
 " I have no idea if the below configuration works lol
-  let g:ale_fixers = {
-    \   'javascript': ['eslint'],
-    \}
-   let g:ale_linters = {
-    \   'javascript': ['eslint'],
-    \}
-   let g:ale_fix_on_save = 1
-   let g:ale_sign_error = '>>'
-   let g:ale_sign_warning = '--'
-   let g:ale_echo_msg_error_str = 'E'
-   let g:ale_echo_msg_warning_str = 'W'
-   let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-   let g:ale_python_flake8_options = '--max-line-length 88 --extend-ignore=E203'
+"   let g:ale_fixers = {
+"     \   'javascript': ['eslint'],
+"     \}
+ "   let g:ale_linters = {
+  " \   'javascript': ['eslint'],
+  " \}
+  " let g:ale_fix_on_save = 1
+  " let g:ale_sign_error = '>>'
+  " let g:ale_sign_warning = '--'
+  " let g:ale_echo_msg_error_str = 'E'
+  " let g:ale_echo_msg_warning_str = 'W'
+  " let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+  "  let g:ale_python_flake8_options = '--max-line-length 88 --extend-ignore=E203'
 
 
 " }}}
