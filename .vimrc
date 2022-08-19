@@ -9,31 +9,27 @@
 "               
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""               
 "AFTER EDITING
-":w, :PlugInstall,source ~.vimrc 
+":w, :PlugInstall, :source ~.vimrc 
+
+" BASE .vimrc: https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/
+" PLUGIN MANAGER
+    " sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+" THEME: curl -o molokai.vim https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
+
+" RUST: https://petermalmgren.com/rc-batch-day-9/
+    " make sure you have rust-analyzer installed
+" WEB DEV:
+    " browser-sync:
+        " sudo npm install -g browser-sync
+        " append to .bashrc
+            " export SERVER_IP=`hostname -I`
+            " alias serve="browser-sync start --server --files . --no-notify --host $SERVER_IP --port 9000"
+
+    " ALE config with prettier and eslint https://www.miikanissi.com/blog/configure-eslint-prettier-ale-vim/
+        " npm install -D --save-dev prettier-eslint-cli
 
 
-
-" NOTES
-" rust config with https://petermalmgren.com/rc-batch-day-9/
-" make sure you have installed rust analyzer
-" sudo npm install -g browser-sync, then inside of .bashrc
-    " # browser-sync config
-    " # Get the current local IP address
-    "export SERVER_IP=`hostname -I`
-
-    " # The command alias to start the browser-sync server
-    "alias serve="browser-sync start --server --files . --no-notify --host $SERVER_IP --port 9000"
-"then when you want to rn local server, just 'serve'
-
-" ALE config with prettier and eslint https://www.miikanissi.com/blog/configure-eslint-prettier-ale-vim/
-" npm install -D --save-dev prettier-eslint-cli
-" for more info go HERE:https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/
-" current color sceme $ curl -o molokai.vim
-" https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
-" colorscheme: molokai or default
-"original molokai
-"256 colors
-"let g:molokai_original = 1
 colorscheme molokai
 
 "This unsets the "last search pattern" register by hitting return
@@ -121,23 +117,22 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 call plug#begin('~/.vim/plugged')
 
+  " GENERAL
   Plug 'dense-analysis/ale'
+  
   Plug 'preservim/nerdtree'
-
-  "RUST
-  Plug 'rust-lang/rust.vim'
-
+  
   Plug 'Yggdroot/indentLine'
 
   Plug 'tpope/vim-commentary'
-
- 
   
+  " RUST
+  Plug 'rust-lang/rust.vim'
+
   " WEBDEV
   Plug 'mattn/emmet-vim'
 
   Plug 'MaxMEllon/vim-jsx-pretty'
-
 
 call plug#end()
 " RUST
