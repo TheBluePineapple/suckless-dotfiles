@@ -11,10 +11,10 @@
 "AFTER EDITING
 ":w, :PlugInstall, :source ~.vimrc 
 
-" BASE .vimrc: https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/
-" PLUGIN MANAGER
-    " sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
+" BASE: https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/
+    " curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+" PLUGIN MANAGER:
+    "    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 
 " THEME: curl -o molokai.vim https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
 
 " RUST: https://petermalmgren.com/rc-batch-day-9/
@@ -30,11 +30,17 @@
         " npm install -D --save-dev prettier-eslint-cli
 
 
+
 colorscheme molokai
+"colorscheme OceanicNext
+"colorscheme gruvbox 
+"set bg=dark
+"colorscheme inkpot
+"colorscheme default
 
 "This unsets the "last search pattern" register by hitting return
 nnoremap <CR> :noh<CR><CR>
-
+set whichwrap+=<,>,h,l,[,]
 
 " Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
@@ -169,6 +175,11 @@ call plug#end()
 
 " MAPPINGS --------------------------------------------------------------- {{{
 
+
+"nmap n :m +1<CR>
+"nmap m :m -2<CR>
+
+
 " Set the backslash as the leader key.
  let mapleader = ","
 
@@ -296,6 +307,38 @@ if has('gui_running')
         \endif<CR>
 
 endif
+
+
+" swap lines
+function! s:swap_lines(n1, n2)
+    let line1 = getline(a:n1)
+    let line2 = getline(a:n2)
+    call setline(a:n1, line2)
+    call setline(a:n2, line1)
+endfunction
+
+function! s:swap_up()
+    let n = line('.')
+    if n == 1
+        return
+    endif
+
+    call s:swap_lines(n, n - 1)
+    exec n - 1
+endfunction
+
+function! s:swap_down()
+    let n = line('.')
+    if n == line('$')
+        return
+    endif
+
+    call s:swap_lines(n, n + 1)
+    exec n + 1
+endfunction
+
+noremap <silent> <C-S-k> :call <SID>swap_up()<CR>
+noremap <silent> <C-S-j> :call <SID>swap_down()<CR>
 
 " }}}
 
