@@ -1,1 +1,1 @@
-These are the dotfiles for my current suckless arch setup
+These are the config for my current suckless arch install
